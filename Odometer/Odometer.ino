@@ -1,5 +1,15 @@
 // CREATED BY:  Matthew Gougeon, Andre Chen and Johnie Devries??
 // Arduino based bycicle odometer
+#include <stdlib.h>
+#if ARDUINO >= 100
+  #include <Arduino.h>
+#else
+  #include <wiring.h>
+#endif
+
+#include "myMillis.h"
+#include "time.h"
+
 
 volatile int currentRevolutions = 0;
 
@@ -25,9 +35,10 @@ int inPin = 2;
 int LEDpin = 13;
 int speakerPin = 3;
 
+Time lapTimes[20];
+
+
 void setup(){
-  
-  
   Serial.begin(9600); //begin serial communication
   pinMode(inPin, INPUT);
   pinMode(LEDpin, OUTPUT);
@@ -65,8 +76,6 @@ void printValues(){
   Serial.print(computeAvgVel());
   Serial.println(" km/h");
   Serial.println("");
-  
-  
 }
 
 float computeAvgVel(){
