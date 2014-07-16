@@ -7,6 +7,7 @@ unsigned long timer2_overflow_cout = 0;
 
 ISR(TIMER2_OVF_vect) // timer 2 overflow vector, this is for stopwatch
 {
+  timer2_overflow_cout++;
   
   //************BELOW IS TIMER0 STUFF FROM ARDUINO CODE******
   
@@ -28,6 +29,8 @@ ISR(TIMER2_OVF_vect) // timer 2 overflow vector, this is for stopwatch
 //************END******
 }
 
+unsigned long resetLapTimer(void); // reset lap timer to 0 sec
+unsigned long getLapTimerValue(void); // value in seconds
 
 unsigned long myMillis()
 {

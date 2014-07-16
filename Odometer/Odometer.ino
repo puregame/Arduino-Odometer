@@ -42,7 +42,7 @@ void setup(){
   Serial.begin(9600); //begin serial communication
   pinMode(inPin, INPUT);
   pinMode(LEDpin, OUTPUT);
-  //TCCR0B = ( _BV(CS01));
+  TCCR2B = ( _BV(CS22) | _BV(CS21) | _BV(CS20)); // set Timer 2 prescalar to 1024
   
   // should this be rising??
   attachInterrupt(0, wheelSpin, RISING); //interrupt for each spin of the wheels.
