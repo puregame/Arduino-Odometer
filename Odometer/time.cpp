@@ -1,4 +1,3 @@
-#include <cstdlib>
 #include <stdlib.h>
 
 
@@ -15,6 +14,10 @@ double Time::getSecond(){
     return second;
 }
 void Time::setTime(int newHour, int newMinute, double newSecond){
+    /*if(newSecond > 60.){
+        minute = newSecond%60;
+    }*/
+
     hour = newHour;
     minute = newMinute;
     second = newSecond;
