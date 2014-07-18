@@ -21,9 +21,8 @@ unsigned long startTime = 0; //
 unsigned long endTime = 0;
 unsigned long loopNum = 0;
 
-const float pi = 3.141592653;
-const float tireDiameter = .55; // diameter in m
-const float MSTOKMH = 3.6;
+const float tireDiameter = .55; // diameter in m of bike tire
+const float MSTOKMH = 3.6; // constant for meters per second to km/h
 
 float totalDistance = 0;
 float previousDistance = 0;
@@ -138,12 +137,12 @@ float computeAvgVel(){
 
 
 void comuputeValues(){
-  endTime = millis();
+  endTime = myMillis();
 
   //compute current distance, time, and velocity
-  thisDistance = (currentRevolutions*pi)*tireDiameter;
+  thisDistance = (currentRevolutions*PI)*tireDiameter;
   thisTime = (endTime - startTime)/1000.0;
-  startTime = millis();
+  startTime = myMillis();
 
   thisVelocity = (thisDistance / thisTime)*MSTOKMH ;
   
