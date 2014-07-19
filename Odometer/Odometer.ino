@@ -1,4 +1,4 @@
-// CREATED BY:  Matthew Gougeon, Andre Chen and Johnie Devries??
+// CREATED BY:  Matthew Gougeon, Andre Chen and Jonathan Devries
 // Arduino based bycicle odometer
 #include <stdlib.h>
 #if ARDUINO >= 100
