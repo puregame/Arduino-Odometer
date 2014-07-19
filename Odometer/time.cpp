@@ -13,15 +13,37 @@ int Time::getMinute(){
 double Time::getSecond(){
     return second;
 }
-void Time::setTime(int newHour, int newMinute, double newSecond){
-    /*if(newSecond > 60.){
-        minute = newSecond%60;
-    }*/
+void Time::setTime(int newHour, int newMinute, int newSecond){
+    minute = 0;
+    hour = 0;
+    second = 0;
+    if(newSecond >= 60){
+        second += newSecond%60;
+        newSecond -= second;
+        minute = (newSecond/60)
+    }
+    else 
+        second = newSecond;
 
-    hour = newHour;
-    minute = newMinute;
-    second = newSecond;
+    minute += newMinute;
+    if(minute >= 60){
+        int oldMinute = minute;
+        minute = oldMinute%60;
+        oldMinute -= minute;
+        hour = (oldMinute/60) 
+    }
+    hour += newHour;
+    
 }
+
+void printTime(Time in){
+    Serial.print(hour);
+    Serial.print(":");
+    Serial.print(minute);
+    Serial.print(":");
+    Serial.print(second);
+}
+
 double Time::getDifference(Time toCompare){
     int rMinute = 0, rHour = 0;
     double rSecond = 0;
