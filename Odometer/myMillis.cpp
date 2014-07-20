@@ -51,10 +51,11 @@ void resetLapTimer(void){ // reset lap timer to 0 sec
 }
 
 unsigned long getLapTimerValue(void){ //get current timer2_millis, divide by 1000 to get seconds
-        return timer2_millis; // /1000;
+    return timer2_millis; // /1000;
 }
 
 unsigned long currentLapTime(){
+  
 	return timer2_millis / 1000;
 }
 

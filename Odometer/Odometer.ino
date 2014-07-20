@@ -27,6 +27,7 @@ const float MSTOKMH = 3.6; // constant for meters per second to km/h
 float totalDistance = 0;
 float previousDistance = 0;
 float totalTime = 0;
+float usrTotalTime = 0;
 Time rideTime;
 Time lapTime;
 
@@ -70,8 +71,8 @@ void setup(){
 
 void loop(){
   // set the current time
-  rideTime.setTime(0,0,myMillis()/1000); // set current ride time based on the myMillis function
-  lapTime.setTime(0,0,currentLapTime()-lapTimes[lapsCompleted]); // set current lap time based on the other millis function
+  rideTime.setTime(0,0, int(myMillis()/1000)); // set current ride time based on the myMillis function
+  lapTime.setTime(0,0, int(currentLapTime()-lapTimes[lapsCompleted])); // set current lap time based on the other millis function
 
 
   noTone(speakerPin); // get rid of any current playing tones
@@ -117,12 +118,6 @@ void printLapValues(){
 
 
 void printMainValues(){
-
-  // ********debug code**************
-  //Serial.println(previousDistance, 10);
-  //Serial.println(totalDistance, 10);
-  //***********END debug code END********
-
   Serial.print("Current Velocity is: ");
   Serial.print(thisVelocity);
   Serial.println(" km/h");
@@ -130,18 +125,18 @@ void printMainValues(){
   Serial.print(totalDistance);
   Serial.println(" km");
   Serial.print("Total time for this ride has been: ");
-  Serial.print(rideTime.printTime());
+  rideTime.printTime();
   Serial.println(" seconds");
   Serial.print("Average speed for this ride has been: ");
-  Serial.print(computeAvgVel());
+  Serial.print((totalDistance/totalTime)*MSTOKMH);
   Serial.println(" km/h");
   Serial.println("");
 }
-
+/*
 float computeAvgVel(){
   return (totalDistance/totalTime)*MSTOKMH;
 } 
-
+*/
 
 void comuputeValues(){
   endTime = myMillis();

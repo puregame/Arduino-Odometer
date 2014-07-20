@@ -2,6 +2,12 @@
 
 
 #include "time.h"
+#include <stdlib.h>
+#if ARDUINO >= 100
+  #include <Arduino.h>
+#else
+  #include <wiring.h>
+#endif
 
 int Time::getHour(){
     return hour;
@@ -20,7 +26,7 @@ void Time::setTime(int newHour, int newMinute, int newSecond){
     if(newSecond >= 60){
         second += newSecond%60;
         newSecond -= second;
-        minute = (newSecond/60)
+        minute = (newSecond/60);
     }
     else 
         second = newSecond;
@@ -30,13 +36,13 @@ void Time::setTime(int newHour, int newMinute, int newSecond){
         int oldMinute = minute;
         minute = oldMinute%60;
         oldMinute -= minute;
-        hour = (oldMinute/60) 
+        hour = (oldMinute/60);
     }
     hour += newHour;
     
 }
 
-void printTime(Time in){
+void Time::printTime(){
     Serial.print(hour);
     Serial.print(":");
     Serial.print(minute);
