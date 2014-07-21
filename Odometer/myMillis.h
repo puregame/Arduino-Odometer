@@ -6,7 +6,7 @@
 #endif
 
 unsigned long myMillis(void);
-unsigned long currentLapTime(void);
+float currentLapTime(void);
 
 
 void resetLapTimer(void); // reset lap timer to 0 sec
